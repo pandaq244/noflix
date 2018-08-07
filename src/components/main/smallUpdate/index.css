@@ -1,0 +1,22 @@
+.series__li {
+  position: relative;
+  overflow: hidden; }
+  .series__li img {
+    display: block;
+    height: 100%; }
+  .series__li a {
+    color: #000; }
+  .series__li:hover .series__li-title {
+    bottom: 0; }
+
+.series__li-title {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition-property: bottom;
+  transition-duration: .7s;
+  transition-timing-function: linear;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  line-height: 50px; }

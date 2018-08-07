@@ -1,0 +1,27 @@
+@import '../../color.sass'
+    
+.main-app
+    grid-template-rows: auto 1fr
+
+.series-container
+    display: grid
+    grid-template-columns: 75px 1fr 75px
+    grid-template-rows: 1fr 75px 1fr
+
+.series-container__list
+    grid-column: 1 / span 3
+    grid-row: 1 / span 3
+
+.series-container__button
+    z-index: 999999
+    overflow: hidden
+    img
+        opacity: .5
+    
+.series-container__button--prev,
+.series-container__button--next
+    grid-column: 1
+    grid-row: 2
+
+.series-container__button--next
+    grid-column: 3

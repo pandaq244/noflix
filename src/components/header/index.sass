@@ -1,0 +1,27 @@
+@import '../color.sass'
+
+.page-logo
+    display: block
+    height: 100%
+    width: 100%
+
+.page-navigation
+    display: grid
+    grid-auto-flow: column
+    grid-auto-columns: minmax(80px, auto)
+    justify-items: center
+    align-items: center
+    li
+        padding: 0 10px
+
+.page-navigation--right
+    justify-self: end
+
+.search__input
+    width: 250px
+    height: 35px
+    padding: 0 15px
+    border:
+        style: solid
+        width: 1px
+        color: $color2

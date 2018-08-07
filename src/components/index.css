@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+a {
+  text-decoration: none; }
+
+li {
+  list-style-type: none; }
+
+.root-app {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-row-gap: 10px; }
+
+.header-bar {
+  display: grid;
+  grid-template-columns: 250px auto .9fr;
+  grid-template-rows: 50px;
+  justify-content: center;
+  background-color: #f1f1f1;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #ddd; }
+
+.main-app {
+  display: grid;
+  grid-row-gap: 10px;
+  overflow-y: auto; }
