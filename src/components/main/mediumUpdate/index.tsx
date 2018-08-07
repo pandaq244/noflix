@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import SeriesList from '../seriesList'; 
+
 import leftArrow from './left_arrow.png';
 import rightArrow from './right_arrow.png';
 
@@ -7,7 +9,7 @@ interface IProps{
     name: string
 };
 
-class SeriesUpdate extends React.Component<IProps> {
+class MediumUpdate extends React.Component<IProps> {
     constructor(props: IProps) {
         super(props);
     }
@@ -19,9 +21,7 @@ class SeriesUpdate extends React.Component<IProps> {
                     <div className="series-container__button series-container__button--prev">
                         <img src={leftArrow} alt="next-page" />
                     </div>
-                    <ul className="series-container__list">
-                        {this.props.name}
-                    </ul>
+                    <SeriesList listClass="series-container__list" />
                     <div className="series-container__button series-container__button--next" >
                         <img src={rightArrow} alt="next-page" />
                     </div>
@@ -31,4 +31,4 @@ class SeriesUpdate extends React.Component<IProps> {
     };
 };
 
-export default SeriesUpdate;
+export default MediumUpdate;

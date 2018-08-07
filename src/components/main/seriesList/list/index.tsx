@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-interface IListItem{
+interface IProps{
     name: string,
     img: string
 }
-export default function ListItem(props: IListItem){
+export default function ListItem(props: IProps){
     return(
         <li className="series__li">
             <Link to="/watch">

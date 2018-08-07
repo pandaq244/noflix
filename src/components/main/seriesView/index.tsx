@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import MediumUpdate from '../mediumUpdate';
-import RecentUpdate from '../smallUpdate';
+import SmallUpdate from '../smallUpdate';
 
 import './index.css';
 
@@ -10,7 +10,7 @@ class SeriesScreen extends React.Component {
         return(
             <React.Fragment>
                 <div className="series-small-container">
-                    <RecentUpdate />
+                    <SmallUpdate title="Popular Series" />
                 </div>
                 <div className="series-medium-container">
                     <MediumUpdate  name="Series" />
