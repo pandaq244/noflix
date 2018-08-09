@@ -9,13 +9,13 @@ class StartScreen extends React.Component {
         return(
             <React.Fragment>
                 <div className="series-small-container">
-                    <SmallUpdate  title="Recent Update" />
+                    <SmallUpdate  title="Recent Update" query="series" />
                 </div>
                 <div className="series-small-container">
-                    <SmallUpdate title="Popular Series" />
+                    <SmallUpdate title="Popular Series" query="series" />
                 </div>
                 <div className="series-small-container">
-                    <SmallUpdate title="Popular Films" />
+                    <SmallUpdate title="Popular Films" query="series" />
                 </div>
             </React.Fragment>
         );

@@ -10,10 +10,10 @@ class SeriesScreen extends React.Component {
         return(
             <React.Fragment>
                 <div className="series-small-container">
-                    <SmallUpdate title="Popular Series" />
+                    <SmallUpdate title="Popular Series" query="series" />
                 </div>
                 <div className="series-medium-container">
-                    <MediumUpdate  name="Series" />
+                    <MediumUpdate  name="Series" query="series" />
                 </div>
             </React.Fragment>
         );

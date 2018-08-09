@@ -6,7 +6,11 @@ import ListItem from './list';
 import './index.css'
 
 interface IProps{
-    listClass?: string
+    listClass: string[],
+    query: {
+        collection: string,
+        count: number
+    }
 }
 
 interface IState{
@@ -32,9 +36,11 @@ class SeriesList extends React.Component<IProps, IState> {
     public componentDidMount() {    
         const firestore=Firebase.firestore();
 
-        const seriesRef=firestore.collection('series');
+        const seriesRef=firestore.collection(this.props.query.collection);
 
-        seriesRef.get()
+        seriesRef
+            .limit(this.props.query.count)
+            .get()
             .then(querySnapchats => {
                 const documents: object[]=[];
                 querySnapchats.forEach(doc => {
@@ -55,7 +61,7 @@ class SeriesList extends React.Component<IProps, IState> {
     };
     public render() {     
         return(
-            <ul className={`element-list ${this.props.listClass}`}>
+            <ul className={`element-list ${this.props.listClass.join(' ')}`}>
                {this.renderList()}
             </ul> 
         );

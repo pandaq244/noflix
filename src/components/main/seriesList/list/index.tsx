@@ -11,9 +11,9 @@ export default function ListItem(props: IProps){
         <li className="series__li">
             <Link to="/watch">
                 <img src={props.preview} alt="series-preview" />
-                <span className="series__li-title">
-                   {props.name}
-                </span>
+                <div className="series__li-title">
+                   <span>{props.name}</span>
+                </div>
             </Link>
         </li>
     );
