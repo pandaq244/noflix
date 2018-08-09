@@ -6,7 +6,8 @@ import {
 
 import Header from './header';
 import StartScreen from './main';
-import SeriesView from'./main/seriesView';
+import EpisodeView from './main/episodesView';
+import SeriesView from './main/seriesView';
 
 import './index.css';
 
@@ -22,6 +23,7 @@ class App extends React.Component {
                 <main className="main-app">    
                     <Route exact={true} path="/" component={StartScreen} />
                     <Route exact={true} path="/series" component={SeriesView} />
+                    <Route exact={true} path="/series/:id" component={EpisodeView} />
                 </main>
             </React.Fragment>
         </Router>

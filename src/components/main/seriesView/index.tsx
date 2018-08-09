@@ -5,7 +5,7 @@ import SmallUpdate from '../smallUpdate';
 
 import './index.css';
 
-class SeriesScreen extends React.Component {
+class SeriesView extends React.Component {
     public render() {
         return(
             <React.Fragment>
@@ -20,4 +20,4 @@ class SeriesScreen extends React.Component {
     };
 };
 
-export default SeriesScreen;
+export default SeriesView;

@@ -44,19 +44,27 @@ class SeriesList extends React.Component<IProps, IState> {
             .then(querySnapchats => {
                 const documents: object[]=[];
                 querySnapchats.forEach(doc => {
-                    documents.push(doc.data())
+                    documents.push({
+                        data: doc.data(),
+                        id: doc.id
+                    });
                 });
                 return documents;
             })
             .then(data => {
                 this.setState({
                     list: data
-                }); 
-            });
+                });
+            });   
     };
     public renderList() {
         return this.state.list.map((element: any, index: number) => {
-            return <ListItem key={`${element.name} ${index}`} name={element.name} preview={element.preview} />
+            return <ListItem 
+                key={element.id} 
+                link={element.id}
+                name={element.data.name}
+                preview={element.data.preview}
+            />
         });
     };
     public render() {     

@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 
 interface IProps{
     name: string,
+    link: string,
     preview: string
 }
 
 export default function ListItem(props: IProps){
     return(
         <li className="series__li">
-            <Link to="/watch">
+            <Link to={`/series/${props.link}`}>
                 <img src={props.preview} alt="series-preview" />
                 <div className="series__li-title">
                    <span>{props.name}</span>

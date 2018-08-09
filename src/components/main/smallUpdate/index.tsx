@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import SeriesList from '../seriesList';
 
+import './index.css';
+
 interface IProps{
     title: string,
     query: string

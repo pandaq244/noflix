@@ -25,13 +25,12 @@ class MediumUpdate extends React.Component<IProps> {
                         <img src={leftArrow} alt="next-page" />
                     </div>
                     <SeriesList listClass={[
-                        "series-container__list",
-                        "series-container__list--medium"
+                        "series-container__list"
                     ]} query={{
                        collection: this.props.query,
                        count: 6 
                     }} />
-                    <div className="series-container__button series-container__button--next" >
+                    <div className="series-container__button series-container__button--next series-container__button--active" >
                         <img src={rightArrow} alt="next-page" />
                     </div>
                 </div>
