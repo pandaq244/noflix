@@ -20,17 +20,17 @@ class MediumUpdate extends React.Component<IProps> {
         return(
             <React.Fragment>
                 <span className="">{this.props.name} List</span>
-                <div className="series-container">
-                    <div className="series-container__button series-container__button--prev">
+                <div className="series-bar-container">
+                    <div className="series-bar-container__button series-bar-container__button--prev">
                         <img src={leftArrow} alt="next-page" />
                     </div>
                     <SeriesList listClass={[
-                        "series-container__list"
+                        "series-bar-container__list"
                     ]} query={{
                        collection: this.props.query,
                        count: 6 
                     }} />
-                    <div className="series-container__button series-container__button--next series-container__button--active" >
+                    <div className="series-bar-container__button series-bar-container__button--next series-bar-container__button--active" >
                         <img src={rightArrow} alt="next-page" />
                     </div>
                 </div>

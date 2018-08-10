@@ -1,5 +1,7 @@
-import * as Firebase from 'firebase';
 import * as React from 'react';
+
+import * as firebase from 'firebase';
+import firebaseConf from '../../../firebase.config';
 
 import ListItem from './list';
 
@@ -11,20 +13,11 @@ interface IProps{
         collection: string,
         count: number
     }
-}
+};
 
 interface IState{
     readonly list: any[]
-}
-
-Firebase.initializeApp({
-    apiKey: "AIzaSyDBsadU_uGC9ewUauw1LpSZWLvH9JJ6BO0",
-    authDomain: "noflix-b9334.firebaseapp.com",
-    databaseURL: "https://noflix-b9334.firebaseio.com",
-    messagingSenderId: "486157692122",
-    projectId: "noflix-b9334",
-    storageBucket: "noflix-b9334.appspot.com"
-});
+};
 
 class SeriesList extends React.Component<IProps, IState> {
     constructor(props: IProps){
@@ -34,7 +27,11 @@ class SeriesList extends React.Component<IProps, IState> {
         };
     };
     public componentDidMount() {    
-        const firestore=Firebase.firestore();
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConf);
+        };
+    
+        const firestore=firebase.firestore();
 
         const seriesRef=firestore.collection(this.props.query.collection);
 

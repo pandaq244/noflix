@@ -7,7 +7,7 @@ import './index.css';
 class StartScreen extends React.Component {
     public render(){
         return(
-            <React.Fragment>
+            <main className="main-app"> 
                 <div className="series-small-container">
                     <SmallUpdate  title="Recent Update" query="series" />
                 </div>
@@ -17,7 +17,7 @@ class StartScreen extends React.Component {
                 <div className="series-small-container">
                     <SmallUpdate title="Popular Films" query="series" />
                 </div>
-            </React.Fragment>
+            </main>
         );
     };
 };

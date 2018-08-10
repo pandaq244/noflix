@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {
     BrowserRouter as Router,
-    Route
+    Route,
+    Switch
 } from 'react-router-dom';
 
 import Header from './header';
@@ -17,14 +18,13 @@ class App extends React.Component {
         <Router>
             <React.Fragment>
                 <header className="header-bar">
-                    {/* more options */}
                     <Header />
                 </header>
-                <main className="main-app">    
+                <Switch>
                     <Route exact={true} path="/" component={StartScreen} />
+                    <Route exact={true} path="/series/:name" component={EpisodeView}/>
                     <Route exact={true} path="/series" component={SeriesView} />
-                    <Route exact={true} path="/series/:id" component={EpisodeView} />
-                </main>
+                </Switch>
             </React.Fragment>
         </Router>
     );
