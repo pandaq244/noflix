@@ -3,6 +3,7 @@
   grid-template-columns: 460px .8fr;
   justify-content: center;
   align-content: center;
+  grid-column-gap: 30px;
   grid-row-gap: 0; }
 
 .series-preview {
@@ -31,5 +32,31 @@
   text-shadow: 2px 2px 0px #000;
   text-transform: uppercase;
   color: #fff;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: bold; }
+  .series-nav span {
+    position: relative;
+    cursor: pointer; }
+    .series-nav span.series-nav--active::after {
+      width: 110%; }
+    .series-nav span:hover::after {
+      width: 110%; }
+    .series-nav span::after {
+      content: "";
+      position: absolute;
+      height: 3px;
+      width: 0;
+      left: 50%;
+      bottom: -3px;
+      transform: translateX(-50%);
+      transition-property: width;
+      transition-duration: 2s;
+      transition-timing-function: ease-in-out;
+      background-color: red; }
+
+.series-top-bar {
+  grid-column: 1 / span 2; }
+
+.series-description-container {
+  grid-column: 1;
+  grid-row: 2 / span 2; }

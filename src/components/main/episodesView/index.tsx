@@ -3,6 +3,10 @@ import * as React from 'react';
 import * as firebase from 'firebase';
 import firebaseConf from '../../../firebase.config';
 
+import NavLi from './nav';
+
+import Description from './description';
+
 import './index.css';
 
 interface IProps {
@@ -11,16 +15,32 @@ interface IProps {
 
 interface IState {
     episode: any,
-    data: any
-}
+    data: any,
+    nav: object[]
+};
 
 class EpisodeView extends React.Component<IProps , IState> {
     constructor(props: IProps) {
         super(props);
+        this.handler=this.handler.bind(this)
         this.state={
             data: {},
-            episode: this.props
+            episode: this.props,
+            nav: [
+                {name: 'Overview', condition: true},
+                {name: 'Episodes', condition: false},
+                {name: 'More like this', condition: false},
+                {name: 'Details', condition: false}
+            ]
         };
+    };
+    public handler(e: any) {
+        console.log(e)
+    };
+    public createNav(data: object[]) {
+        return data.map((element: any) => {
+            return <NavLi key={element}  name={element} condition={element.condition} handler={this.handler} />
+        });
     };
     public componentDidMount() {
         if (!firebase.apps.length) {
@@ -42,22 +62,25 @@ class EpisodeView extends React.Component<IProps , IState> {
             })
             .then((data) => {
                 console.log(data.data())
-            });
+            });  
     };
     public render() {  
         return(
             <main className="main-app main-series-info"> 
-                <div />
-                <div />
-                <div />
+                <div className="series-top-bar"/>
+                <div className="series-description-container" >
+                    <Description name="Dr House" description={this.state.data.description} data={{
+                        episode: 1,
+                        name: 'Anyone lie',
+                        season: 1
+                    }}/>
+                </div>
                 <div className="player-container">
                     <iframe className="player-frame" src="https://openload.co/embed/WLYtmM73GNY" />
                 </div>
                 <ul className="series-nav">
-                    <li>Overview</li>
-                    <li>Episodes</li>
-                    <li>More like this</li>
-                    <li>Details</li>
+                    {/* test */}
+                    <NavLi key={'111'}  name={'Overview'} handler={this.handler} condition={true}/>
                 </ul>
             </main>
         );
