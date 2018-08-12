@@ -1,15 +1,19 @@
 import * as React from 'react';
 
 interface IProps {
-    condition: boolean,
     name: string,
-    handler: any
+    changeNav: any,
+    condition: string,
+    index: number
 };
 
 export default (props: IProps) => {
+    function changeLink(){
+        return props.changeNav(props.index);
+    };
     return(
         <li>
-            <span className={props.condition? 'series-nav--active':''} onClick={props.handler}>
+            <span className={props.condition} onClick={changeLink}>
                 {props.name}
             </span>
         </li>

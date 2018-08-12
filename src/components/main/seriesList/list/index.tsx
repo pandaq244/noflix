@@ -7,7 +7,7 @@ interface IProps{
     preview: string
 }
 
-export default function ListItem(props: IProps){
+export default (props: IProps) => {
     return(
         <li className="series__li">
             <Link to={`/series/${props.link}`}>

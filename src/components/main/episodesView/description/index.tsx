@@ -1,30 +1,62 @@
+import * as firebase from 'firebase';
 import * as React from 'react';
+
+import firebaseConf from '../../../../firebase.config';
 
 import './index.css';
 
 interface IProps {
-    name: string,
-    description: string,
-    data: {
-        season: number,
-        episode: number,
-        name: string
-    }
+    data: string,
+    episode: number,
+    season: number
 };
-export default (props: IProps) => {
-    return(
-        <div className="series-description">
-            <span className="series-description--title">
-              {props.name}
-            </span>
-            <div className="series-description--summary">
-                <span className="">Season {props.data.season},</span>
-                <span className="">Episode {props.data.episode}:</span>
-                <span className="">"{props.data.name}"</span>
+interface IState {
+    description: string,
+    name: string
+};
+
+export default class SeriesDescription extends React.Component<IProps, IState> {
+    constructor(props: IProps) {
+        super(props);
+        this.state={
+            description: 'IDIOT',
+            name: 'I dont know'
+        };
+    };
+    public componentDidMount() {
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConf);
+        };
+
+        firebase
+            .firestore()
+            .collection('series')
+            .doc(this.props.data)
+            .get()
+            .then(snap => {
+                const data=Object(snap.data());
+  
+                this.setState({
+                    description: data.description,
+                    name: data.name
+                });
+            });
+    };
+    public render() {
+        return(
+            <div className="series-description">
+                <span className="series-description--title">
+                  {this.state.name}
+                </span>
+                <div className="series-description--summary">
+                    <span className="">Season {this.props.season},</span>
+                    <span className="">Episode :{this.props.episode}</span>
+                    <span className="">"AnyOne lie"</span>
+                </div>
+                <div className="">
+                   {this.state.description}
+                </div>
             </div>
-            <div className="">
-                {props.description}
-            </div>
-        </div>
-    );
+        );
+    };
 };

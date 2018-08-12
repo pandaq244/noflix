@@ -12,10 +12,7 @@ interface IProps{
     query: string
 };
 
-class MediumUpdate extends React.Component<IProps> {
-    constructor(props: IProps) {
-        super(props);
-    }
+export default class MediumUpdate extends React.Component<IProps> {
     public render() {
         return(
             <React.Fragment>
@@ -24,12 +21,13 @@ class MediumUpdate extends React.Component<IProps> {
                     <div className="series-bar-container__button series-bar-container__button--prev">
                         <img src={leftArrow} alt="next-page" />
                     </div>
-                    <SeriesList listClass={[
-                        "series-bar-container__list"
-                    ]} query={{
-                       collection: this.props.query,
-                       count: 6 
-                    }} />
+                    <SeriesList 
+                        listClass={["series-bar-container__list"]} 
+                        query={{
+                            collection: this.props.query,
+                            count: 6 
+                        }} 
+                    />
                     <div className="series-bar-container__button series-bar-container__button--next series-bar-container__button--active" >
                         <img src={rightArrow} alt="next-page" />
                     </div>
@@ -38,5 +36,3 @@ class MediumUpdate extends React.Component<IProps> {
         );
     };
 };
-
-export default MediumUpdate;

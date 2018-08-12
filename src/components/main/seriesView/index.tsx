@@ -5,7 +5,7 @@ import SmallUpdate from '../smallUpdate';
 
 import './index.css';
 
-class SeriesView extends React.Component {
+export default class SeriesView extends React.Component {
     public render() {
         return(
             <main className="main-app main-series">    
@@ -19,5 +19,3 @@ class SeriesView extends React.Component {
         );
     };
 };
-
-export default SeriesView;

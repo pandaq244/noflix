@@ -12,7 +12,7 @@ import SeriesView from './main/seriesView';
 
 import './index.css';
 
-class App extends React.Component {
+export default class App extends React.Component {
   public render() {
     return (
         <Router>
@@ -28,7 +28,5 @@ class App extends React.Component {
             </React.Fragment>
         </Router>
     );
-  }
-}
-
-export default App;
+  };
+};

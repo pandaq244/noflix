@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './index.css';
 
-class Header extends React.Component {
+export default class Header extends React.Component {
     public render() {
         return(
             <React.Fragment>
@@ -33,5 +33,3 @@ class Header extends React.Component {
         );
     };
 };
-
-export default Header;

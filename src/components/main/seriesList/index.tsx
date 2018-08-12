@@ -16,10 +16,10 @@ interface IProps{
 };
 
 interface IState{
-    readonly list: any[]
+    list: any[]
 };
 
-class SeriesList extends React.Component<IProps, IState> {
+export default class SeriesList extends React.Component<IProps, IState> {
     constructor(props: IProps){
         super(props);
         this.state={
@@ -72,5 +72,3 @@ class SeriesList extends React.Component<IProps, IState> {
         );
     };
 };
-
-export default SeriesList;

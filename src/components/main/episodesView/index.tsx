@@ -1,90 +1,98 @@
 import * as React from 'react';
 
-import * as firebase from 'firebase';
-import firebaseConf from '../../../firebase.config';
+import Description from './description';
+import Episodes from './episodes';
 
 import NavLi from './nav';
-
-import Description from './description';
 
 import './index.css';
 
 interface IProps {
     name: string
-}
-
-interface IState {
-    episode: any,
-    data: any,
-    nav: object[]
 };
 
-class EpisodeView extends React.Component<IProps , IState> {
+interface IState {
+    series: any,
+    data: any,
+    nav: {
+        bookmark: number
+        list: string[]
+    }
+};
+
+export default class EpisodeView extends React.Component<IProps , IState> {
     constructor(props: IProps) {
         super(props);
-        this.handler=this.handler.bind(this)
         this.state={
             data: {},
-            episode: this.props,
-            nav: [
-                {name: 'Overview', condition: true},
-                {name: 'Episodes', condition: false},
-                {name: 'More like this', condition: false},
-                {name: 'Details', condition: false}
-            ]
+            nav: {
+                bookmark: 0,
+                list: [
+                    'Overview',
+                    'Episodes',
+                    'More like this',
+                    'Details',
+                ]
+            },
+            series: {
+                episode: 1,
+                id: this.props,
+                season: 1
+            }
         };
+        this.changeNav=this.changeNav.bind(this);
     };
-    public handler(e: any) {
-        console.log(e)
+    public changeNav(index: number) {
+        this.setState(prevState => ({
+            nav: {
+                ...prevState.nav,
+                bookmark: index
+            }
+        }));
     };
-    public createNav(data: object[]) {
-        return data.map((element: any) => {
-            return <NavLi key={element}  name={element} condition={element.condition} handler={this.handler} />
+    public createNav(data: any[]) {
+        const bookmark=this.state.nav.bookmark;
+
+        return data.map((element: string, index: number) => {
+            return <NavLi 
+                key={element+index} 
+                name={element} 
+                condition={index===bookmark?'series-nav--active':''}
+                changeNav={this.changeNav} 
+                index={index}
+            />
         });
     };
-    public componentDidMount() {
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConf);
+    public renderLeftPanel() {
+        let data: any=null;
+        switch(this.state.nav.bookmark) {
+            case 0: 
+                data=<Description 
+                    data={this.state.series.id.match.params.name} 
+                    episode={this.state.series.episode} 
+                    season={this.state.series.season}
+                />
+                break;
+            case 1:
+                data=<Episodes />
+                break;
         };
-
-        const firestore=firebase.firestore();
-
-        const seriesRef=firestore.collection('series');
-
-        seriesRef
-            .doc(this.state.episode.match.params.name)
-            .get()
-            .then(doc => {
-                this.setState({
-                    data: doc.data()
-                });
-                return doc;
-            })
-            .then((data) => {
-                console.log(data.data())
-            });  
+        return data;
     };
     public render() {  
         return(
             <main className="main-app main-series-info"> 
                 <div className="series-top-bar"/>
-                <div className="series-description-container" >
-                    <Description name="Dr House" description={this.state.data.description} data={{
-                        episode: 1,
-                        name: 'Anyone lie',
-                        season: 1
-                    }}/>
+                <div className="series-description-container">
+                    {this.renderLeftPanel()} 
                 </div>
                 <div className="player-container">
                     <iframe className="player-frame" src="https://openload.co/embed/WLYtmM73GNY" />
                 </div>
                 <ul className="series-nav">
-                    {/* test */}
-                    <NavLi key={'111'}  name={'Overview'} handler={this.handler} condition={true}/>
+                    {this.createNav(this.state.nav.list)}
                 </ul>
             </main>
         );
     };
 };
-
-export default EpisodeView;

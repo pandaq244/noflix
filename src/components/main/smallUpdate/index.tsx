@@ -9,7 +9,7 @@ interface IProps{
     query: string
 }
 
-class SmallUpdate extends React.Component<IProps> {
+export default class SmallUpdate extends React.Component<IProps> {
     public render() {      
         return(
             <React.Fragment>
@@ -24,5 +24,3 @@ class SmallUpdate extends React.Component<IProps> {
         );
     };
 };
-
-export default SmallUpdate;

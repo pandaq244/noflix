@@ -4,8 +4,8 @@ import SmallUpdate from './smallUpdate';
 
 import './index.css';
 
-class StartScreen extends React.Component {
-    public render(){
+export default class StartScreen extends React.Component {
+    public render() {
         return(
             <main className="main-app"> 
                 <div className="series-small-container">
@@ -21,5 +21,3 @@ class StartScreen extends React.Component {
         );
     };
 };
-
-export default StartScreen;
