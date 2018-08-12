@@ -7,54 +7,79 @@ import './index.css';
 
 interface IProps {
     data: string,
-    episode: number,
-    season: number
+    episodeNumber: number,
+    seasonNumber: number
 };
 interface IState {
-    description: string,
-    name: string
+    episodeName: string,
+    seriesDescription: string,
+    seriesName: string,
+    query: any
 };
 
 export default class SeriesDescription extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state={
-            description: 'IDIOT',
-            name: 'I dont know'
+            episodeName: 'seriously',
+            query: null,
+            seriesDescription: 'IDIOT',
+            seriesName: 'I dont know'
         };
     };
     public componentDidMount() {
         if (!firebase.apps.length) {
             firebase.initializeApp(firebaseConf);
         };
-
+        
         firebase
             .firestore()
             .collection('series')
             .doc(this.props.data)
             .get()
-            .then(snap => {
-                const data=Object(snap.data());
-  
+            .then(snapS => {
+                const data=Object(snapS.data());
+                
                 this.setState({
-                    description: data.description,
-                    name: data.name
+                    query: snapS.data()
                 });
+                
+               return {
+                   episode: this.state.query.episodes[this.props.seasonNumber-1][this.props.episodeNumber-1].id,
+                   props: data
+               };
+            })
+            .then(data => {
+                firebase
+                    .firestore()
+                    .collection('episode')
+                    .doc(data.episode)
+                    .get()
+                    .then(snapE => {
+                        const dataE=Object(snapE.data());
+
+                        this.setState({
+                            episodeName: dataE.name,
+                            seriesDescription: data.props.description,
+                            seriesName: data.props.name
+                        });
+                    });
             });
+
     };
     public render() {
         return(
             <div className="series-description">
                 <span className="series-description--title">
-                  {this.state.name}
+                  {this.state.seriesName}
                 </span>
                 <div className="series-description--summary">
-                    <span className="">Season {this.props.season},</span>
-                    <span className="">Episode :{this.props.episode}</span>
-                    <span className="">"AnyOne lie"</span>
+                    <span className="">Season {this.props.seasonNumber},</span>
+                    <span className="">Episode :{this.props.episodeNumber}</span>
+                    <span className="">"{this.state.episodeName}"</span>
                 </div>
                 <div className="">
-                   {this.state.description}
+                   {this.state.seriesDescription}
                 </div>
             </div>
         );

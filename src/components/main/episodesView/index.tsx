@@ -69,8 +69,8 @@ export default class EpisodeView extends React.Component<IProps , IState> {
             case 0: 
                 data=<Description 
                     data={this.state.series.id.match.params.name} 
-                    episode={this.state.series.episode} 
-                    season={this.state.series.season}
+                    episodeNumber={this.state.series.episode} 
+                    seasonNumber={this.state.series.season}
                 />
                 break;
             case 1:
