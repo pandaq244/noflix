@@ -10,6 +10,7 @@ interface IProps {
     episodeNumber: number,
     seasonNumber: number
 };
+
 interface IState {
     episodeName: string,
     seriesDescription: string,
@@ -28,7 +29,7 @@ export default class SeriesDescription extends React.Component<IProps, IState> {
         };
     };
     public componentDidMount() {
-        if (!firebase.apps.length) {
+        if(!firebase.apps.length) {
             firebase.initializeApp(firebaseConf);
         };
         
@@ -37,11 +38,11 @@ export default class SeriesDescription extends React.Component<IProps, IState> {
             .collection('series')
             .doc(this.props.data)
             .get()
-            .then(snapS => {
-                const data=Object(snapS.data());
+            .then(snap => {
+                const data=Object(snap.data());
                 
                 this.setState({
-                    query: snapS.data()
+                    query: snap.data()
                 });
                 
                return {
@@ -55,8 +56,8 @@ export default class SeriesDescription extends React.Component<IProps, IState> {
                     .collection('episode')
                     .doc(data.episode)
                     .get()
-                    .then(snapE => {
-                        const dataE=Object(snapE.data());
+                    .then(snap => {
+                        const dataE=Object(snap.data());
 
                         this.setState({
                             episodeName: dataE.name,

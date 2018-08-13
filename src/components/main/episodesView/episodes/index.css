@@ -1,0 +1,22 @@
+.series-episode-container {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.series-season__list {
+  display: grid;
+  grid-auto-rows: minmax(50px, auto); }
+  .series-season__list li {
+    display: grid;
+    grid-template-rows: 50px auto;
+    align-items: center; }
+
+.series-season--number {
+  align-self: center;
+  font-size: 22px; }
+
+.series-episodes__list {
+  display: grid; }
+  .series-episodes__list li {
+    grid-template-columns: .95fr;
+    justify-content: center; }

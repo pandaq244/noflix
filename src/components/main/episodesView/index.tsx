@@ -26,7 +26,7 @@ export default class EpisodeView extends React.Component<IProps , IState> {
         this.state={
             data: {},
             nav: {
-                bookmark: 0,
+                bookmark: 1,
                 list: [
                     'Overview',
                     'Episodes',
@@ -67,14 +67,20 @@ export default class EpisodeView extends React.Component<IProps , IState> {
         let data: any=null;
         switch(this.state.nav.bookmark) {
             case 0: 
-                data=<Description 
+                data=
+                <Description  
                     data={this.state.series.id.match.params.name} 
                     episodeNumber={this.state.series.episode} 
                     seasonNumber={this.state.series.season}
                 />
                 break;
             case 1:
-                data=<Episodes />
+                data=
+                    <Episodes 
+                        data={this.state.series.id.match.params.name} 
+                        episodeNumber={this.state.series.episode} 
+                        seasonNumber={this.state.series.season}
+                    />
                 break;
         };
         return data;
