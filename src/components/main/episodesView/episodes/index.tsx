@@ -31,6 +31,7 @@ export default class EpisodesList extends React.Component<IProps, IState> {
             seasonNumber: this.props.seasonNumber,
             source: '',
         };
+        console.log('aaa')
     };
     public getEpisodes(docId: any) {
         return new Promise((resolve, reject) => {
@@ -50,7 +51,7 @@ export default class EpisodesList extends React.Component<IProps, IState> {
 
         episodes
             .forEach((element: any) => {
-                layout.push(<EpisodeLi key={'asdas'} value={element.name} />);
+                layout.push(<EpisodeLi key={element} value={element.name} />);
             });
 
         return layout;

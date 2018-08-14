@@ -22,7 +22,7 @@ export default class App extends React.Component {
                 </header>
                 <Switch>
                     <Route exact={true} path="/" component={StartScreen} />
-                    <Route exact={true} path="/series/:name" component={EpisodeView}/>
+                    <Route exact={true} path="/series/:id" component={EpisodeView}/>
                     <Route exact={true} path="/series" component={SeriesView} />
                 </Switch>
             </React.Fragment>

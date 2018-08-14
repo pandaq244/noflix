@@ -1,88 +1,74 @@
-import * as firebase from 'firebase';
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-import firebaseConf from '../../../../firebase.config';
+
+import { episodeQuery } from '../../../../api/query';
+
 
 import './index.css';
 
 interface IProps {
-    data: string,
-    episodeNumber: number,
-    seasonNumber: number
+    episode: any,
+    series: any,
+    updateName: any
 };
 
-interface IState {
-    episodeName: string,
-    seriesDescription: string,
-    seriesName: string,
-    query: any
-};
 
-export default class SeriesDescription extends React.Component<IProps, IState> {
+class SeriesDescription extends React.Component<IProps> {
     constructor(props: IProps) {
         super(props);
-        this.state={
-            episodeName: 'seriously',
-            query: null,
-            seriesDescription: 'IDIOT',
-            seriesName: 'I dont know'
-        };
     };
-    public componentDidMount() {
-        if(!firebase.apps.length) {
-            firebase.initializeApp(firebaseConf);
-        };
-        
-        firebase
-            .firestore()
-            .collection('series')
-            .doc(this.props.data)
-            .get()
-            .then(snap => {
-                const data=Object(snap.data());
-                
-                this.setState({
-                    query: snap.data()
-                });
-                
-               return {
-                   episode: this.state.query.episodes[this.props.seasonNumber-1][this.props.episodeNumber-1].id,
-                   props: data
-               };
-            })
-            .then(data => {
-                firebase
-                    .firestore()
-                    .collection('episode')
-                    .doc(data.episode)
-                    .get()
-                    .then(snap => {
-                        const dataE=Object(snap.data());
+    public async componentWillReceiveProps(props: IProps) {
+        if(this.props.series.id!==props.series.id){    
+            const queryData=Object(await episodeQuery(
+                props.series.episodes[props.series.seasonNumber-1][props.series.episodeNumber-1].id
+            ));
+            const data=queryData.data();
 
-                        this.setState({
-                            episodeName: dataE.name,
-                            seriesDescription: data.props.description,
-                            seriesName: data.props.name
-                        });
-                    });
+            this.props.updateName({
+                description: data.description,
+                name: data.name
             });
-
+        }
     };
     public render() {
         return(
             <div className="series-description">
                 <span className="series-description--title">
-                  {this.state.seriesName}
+                  {this.props.series.name}
                 </span>
                 <div className="series-description--summary">
-                    <span className="">Season {this.props.seasonNumber},</span>
-                    <span className="">Episode :{this.props.episodeNumber}</span>
-                    <span className="">"{this.state.episodeName}"</span>
+                    <span className="">Season {this.props.series.seasonNumber},</span>
+                    <span className="">Episode :{this.props.series.episodeNumber}</span>
+                    <span className="">"{this.props.episode.name}"</span>
                 </div>
                 <div className="">
-                   {this.state.seriesDescription}
+                   {this.props.series.description}
                 </div>
             </div>
         );
     };
 };
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        updateName: (data: any) => {
+            dispatch({
+                payload: {
+                    description: data.description,
+                    name: data.name
+                },
+                type: 'updateEpisodeInfo'
+            });
+        }
+    };
+};
+
+const mapStateToProps = (state: any) => {
+    return {
+        episode: state.episode,
+        series: state.series
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SeriesDescription);
