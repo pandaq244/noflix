@@ -70,9 +70,9 @@ const episodeReducer = (state: IEpisode = episodeState, action: any) => {
     switch(action.type) {
         case 'updateEpisodeInfo': 
             state = {
-                ...state,
                 description: action.payload.description,
-                name: action.payload.name
+                name: action.payload.name,
+                source: action.payload.source
             };
             break;
     };

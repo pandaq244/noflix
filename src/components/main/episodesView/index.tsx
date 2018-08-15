@@ -6,7 +6,7 @@ import Episodes from './episodes';
 
 import NavLi from './nav';
 
-import { seriesQuery } from  '../../../api/query';
+import { episodeQuery, seriesDocQuery, sourceQuery } from  '../../../api/query';
 
 import './index.css';
 
@@ -15,7 +15,8 @@ interface IProps {
     series: any,
     seriesNav: any,
     id: string,
-    updateSeries: any,
+    updateEpisode: any,
+    updateSeries: any
 };
 
 interface IState {
@@ -36,17 +37,34 @@ class EpisodeView extends React.Component<IProps , IState> {
                 return <NavLi key={element+index} value={element} index={index} />
             });
     };
-    public async componentWillMount() {
+    public async componentDidMount() {
         const { id } = this.state.seriesId.match.params;
 
-        const queryData=Object(await seriesQuery(id));
-        const data=queryData.data();
-        
+        const querySeries = Object(await seriesDocQuery(id));
+        const seriesData = querySeries.data();
+     
+
+        const queryEpisode = await episodeQuery(
+            seriesData.episodes[this.props.series.seasonNumber][this.props.series.episodeNumber-1].id
+        );
+        const episodeData = Object(queryEpisode).data();
+
+        const querySource = await sourceQuery(
+            episodeData.source.id
+        );
+        const sourceData = Object(querySource).data()
+
         this.props.updateSeries({
-            description: data.description,
-            episodes: data.episodes,
-            id: queryData.id,
-            name: data.name
+            description: seriesData.description,
+            episodes: seriesData.episodes,
+            id: querySeries.id,
+            name: seriesData.name
+        });
+        
+        this.props.updateEpisode({
+            description: episodeData.description,
+            name: episodeData.name,
+            source: sourceData.source
         });
     };
     public leftPanel() {
@@ -56,12 +74,7 @@ class EpisodeView extends React.Component<IProps , IState> {
                 data=<Description />
                 break;
             case 1:
-                data=
-                    <Episodes 
-                        data={this.state.seriesId.match.params.id} 
-                        episodeNumber={0} 
-                        seasonNumber={0}
-                    />
+                data=<Episodes />
                 break;
         };
         return data;
@@ -94,6 +107,16 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
+        updateEpisode: (data: any) => {
+            dispatch({
+                payload: {
+                    description: data.description,
+                    name: data.name,
+                    source: data.source
+                },
+                type: 'updateEpisodeInfo'
+            });
+        },
         updateSeries: (data: any) => {
             dispatch({
                 payload: {

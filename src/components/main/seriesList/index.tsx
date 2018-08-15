@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import * as firebase from 'firebase';
-import firebaseConf from '../../../firebase.config';
+import { seriesListQuery } from '../../../api/query/';
 
 import ListItem from './list';
 
@@ -16,7 +15,7 @@ interface IProps{
 };
 
 interface IState{
-    list: any[]
+    list: any
 };
 
 export default class SeriesList extends React.Component<IProps, IState> {
@@ -26,42 +25,19 @@ export default class SeriesList extends React.Component<IProps, IState> {
             list: []
         };
     };
-    public componentDidMount() {    
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConf);
-        };
-    
-        const firestore=firebase.firestore();
-
-        const seriesRef=firestore.collection(this.props.query.collection);
-
-        seriesRef
-            .limit(this.props.query.count)
-            .get()
-            .then(querySnapchats => {
-                const documents: object[]=[];
-                querySnapchats.forEach(doc => {
-                    documents.push({
-                        data: doc.data(),
-                        id: doc.id
-                    });
-                });
-                return documents;
-            })
-            .then(data => {
-                this.setState({
-                    list: data
-                });
-            });   
+    public async componentDidMount() {    
+        const seriesQuery = await seriesListQuery({
+            limit: this.props.query.count,
+            type: this.props.query.collection
+        }); 
+        
+        this.setState({
+            list: seriesQuery
+        });
     };
     public renderList() {
         return this.state.list.map((element: any, index: number) => {
-            return <ListItem 
-                key={element.id} 
-                link={element.id}
-                name={element.data.name}
-                preview={element.data.preview}
-            />
+            return <ListItem key={element.id} link={element.id} name={element.data.name}preview={element.data.preview} />
         });
     };
     public render() {     
