@@ -43,15 +43,16 @@ class EpisodeView extends React.Component<IProps , IState> {
         const querySeries = Object(await seriesDocQuery(id));
         const seriesData = querySeries.data();
      
-
+       
         const queryEpisode = await episodeQuery(
             seriesData.episodes[this.props.series.seasonNumber][this.props.series.episodeNumber-1].id
         );
         const episodeData = Object(queryEpisode).data();
-
+        
         const querySource = await sourceQuery(
             episodeData.source.id
         );
+ 
         const sourceData = Object(querySource).data()
 
         this.props.updateSeries({
@@ -79,6 +80,7 @@ class EpisodeView extends React.Component<IProps , IState> {
         };
         return data;
     };
+   
     public render() {  
         return(
             <main className="main-app main-series-info"> 

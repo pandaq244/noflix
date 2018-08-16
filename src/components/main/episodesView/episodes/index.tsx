@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import CreateList from './list';
 
-import { episodeQuery } from '../../../../api/query';
-
 import './index.css';
 
 interface IProps {
@@ -24,21 +22,13 @@ class EpisodesList extends React.Component<IProps, IState> {
         };
     };
     public async componentDidMount() {
-
-        const episodes=this.props.series.episodes[this.props.series.seasonNumber]
-            .map(async (element: any) => {
-                return episodeQuery(element.id);
-            });
-
-        const season=await Promise.all(episodes);
-
         const list: any[]=[];
 
-        Object.keys(season)
-            .forEach((element: any, index: number) => {
+        Object.keys(this.props.series.episodes)
+            .forEach((element: string, index: number) => {
                 list.push(
-                    <CreateList key={`arraySeason${index}`} elements={season} index={index+1}/>
-                );       
+                    <CreateList key={`arraySeason${index}`}  index={index+1} />
+                ); 
             });
 
         this.setState({
