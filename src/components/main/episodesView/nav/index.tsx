@@ -1,43 +1,49 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import NavLi from './li/';
+
 interface IProps {
-    value: string,
-    index: number,
-    navigation: {
-        bookmark: number,
-        options: string[]
-    },
-    updateBookmark: any
+    navigation: any
 };
 
- const createLi = (props: IProps) => {
-    function update() {
-        props.updateBookmark(props.index);
-    }
-    return(
-        <li>
-            <span className={props.navigation.bookmark === props.index? 'series-nav--active':''} onClick={update} >
-                {props.value}
-            </span>
-        </li>
-    );
+interface IState {
+    navigation: any[]
 };
+
+class EpisodeNavigation extends React.Component<IProps, IState> {
+    constructor(props: IProps) {
+        super(props);
+        
+        this.state = {
+            navigation: []
+        };
+    };
+    public componentWillMount() {
+        let navigation: any[] = [];
+
+        navigation = this.props.navigation.options
+            .map((element: string, index: number) => {
+                return <NavLi key={element+index} value={element} index={index} />
+            });
+
+        this.setState({
+            navigation,
+        });
+    };
+    public render() {
+        return(
+            <ul className="series-nav">
+                {this.state.navigation}
+            </ul>
+        );
+    };
+};
+
 const mapStateToProps = (state: any) => {
     return {
         navigation: state.seriesNav
     };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        updateBookmark: (id: number) => {
-            dispatch({
-                payload: id,
-                type: 'updateNavBookmark'
-            });
-        }
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(createLi);
+export default connect(mapStateToProps)(EpisodeNavigation);

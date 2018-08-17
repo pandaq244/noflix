@@ -37,7 +37,7 @@ export default class SeriesList extends React.Component<IProps, IState> {
     };
     public renderList() {
         return this.state.list.map((element: any, index: number) => {
-            return <ListItem key={element.id} link={element.id} name={element.data.name}preview={element.data.preview} />
+            return <ListItem key={element.id} link={element.id} name={element.data.name}preview={element.data.preview} />;
         });
     };
     public render() {     

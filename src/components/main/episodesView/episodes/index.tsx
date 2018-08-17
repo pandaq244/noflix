@@ -46,6 +46,7 @@ class EpisodesList extends React.Component<IProps, IState> {
         );
     };
 };
+
 const mapStateToProps = (state: any) => {
     return {
         episode: state.episode,
@@ -53,10 +54,4 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(EpisodesList);
+export default connect(mapStateToProps)(EpisodesList);
