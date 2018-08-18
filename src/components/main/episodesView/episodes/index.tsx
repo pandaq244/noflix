@@ -21,26 +21,25 @@ class EpisodesList extends React.Component<IProps, IState> {
             episodes: []
         };
     };
-    public async componentDidMount() {
+    public renderSeasons() {
         const list: any[]=[];
 
         Object.keys(this.props.series.episodes)
             .forEach((element: string, index: number) => {
                 list.push(
-                    <CreateList key={`arraySeason${index}`}  index={index+1} />
+                    <CreateList key={Math.random()}  index={index+1} />
                 ); 
             });
 
-        this.setState({
-            episodes: list
-        });
+        return list;
     };
     public render() {
+        console.log('aa')
         return(
             <div className="series-episode-container">
                 <h2>PICK UR EPISODE</h2>
                 <ul className="series-season__list">
-                    {this.state.episodes}
+                    {this.renderSeasons()}
                 </ul>
             </div>
         );

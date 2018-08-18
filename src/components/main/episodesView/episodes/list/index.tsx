@@ -7,7 +7,8 @@ import CreateLi from './li/';
 
 interface IProps {
     index: number,
-    series: any
+    series: any,
+    update: any
 };
 
 interface IState {
@@ -22,6 +23,8 @@ class EpisodeNav extends React.Component<IProps, IState> {
             episodes: [],
             render: []
         };
+
+        this.update = this.update.bind(this);
     };
     public async componentDidMount() {
         if(this.props.index === this.props.series.seasonNumber){
@@ -40,7 +43,7 @@ class EpisodeNav extends React.Component<IProps, IState> {
         this.state.episodes
             .forEach((element: any, index: number) => {
                 list.push(
-                    <CreateLi key={`arrayOf${this.props.index}Episode${index}`} id={element.id} season={this.props.index} episode={index+1} />
+                    <CreateLi key={Math.random()} id={element.id} season={this.props.index} episode={index+1} />
                 );
             });
 
@@ -49,10 +52,16 @@ class EpisodeNav extends React.Component<IProps, IState> {
             render: list
         }));
     };
+    public update() {
+        this.props.update({
+            episode: 1,
+            season: this.props.index
+        });
+    };
     public render() {
         return(
             <li>
-                <span className="series-season--number">Season {this.props.index}</span>
+                <span onClick={this.update} className="series-season--number">Season {this.props.index}</span>
                 <ul className="series-episodes__list">
                     {this.state.render}
                 </ul>
