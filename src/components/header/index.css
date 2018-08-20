@@ -11,6 +11,10 @@
   align-items: center; }
   .page-navigation li {
     padding: 0 10px; }
+    .page-navigation li a {
+      color: #4d4d4d; }
+      .page-navigation li a.page-naviagtion__a--open, .page-navigation li a:hover {
+        color: #f00; }
 
 .page-navigation--right {
   justify-self: end; }

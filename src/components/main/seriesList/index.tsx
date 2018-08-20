@@ -10,7 +10,8 @@ interface IProps{
     listClass: string[],
     query: {
         collection: string,
-        count: number
+        count: number,
+        order: string
     }
 };
 
@@ -27,8 +28,9 @@ export default class SeriesList extends React.Component<IProps, IState> {
     };
     public async componentDidMount() {    
         const seriesQuery = await seriesListQuery({
-            limit: this.props.query.count,
-            type: this.props.query.collection
+            collection: this.props.query.collection,
+            count: this.props.query.count,
+            order: this.props.query.order,
         }); 
         
         this.setState({

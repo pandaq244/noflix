@@ -36,7 +36,8 @@
   font-weight: bold; }
   .series-nav span {
     position: relative;
-    cursor: pointer; }
+    cursor: pointer;
+    z-index: 999999; }
     .series-nav span.series-nav--active::after {
       width: 110%; }
     .series-nav span:hover::after {

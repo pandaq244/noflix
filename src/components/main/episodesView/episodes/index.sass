@@ -1,8 +1,9 @@
+@import '../../../color.sass'
+    
 .series-episode-container
     display: grid
     grid-template-rows: 50px 1fr
-    background:
-        color: rgba(0, 0, 0, .7)
+
 
 .series-season__list
     display: grid
@@ -11,6 +12,11 @@
         display: grid
         grid-template-rows: 50px auto
         align-items: center
+        cursor: pointer
+        span:hover
+            z-index: 999
+            background: 
+                color: $color3
 
 .series-season--number
     align-self: center
@@ -22,3 +28,9 @@
     li
         grid-template-columns: .95fr
         justify-content: center
+        &:hover
+            background:
+                color: $color6
+
+.episodes-nav__button
+    text-align: center

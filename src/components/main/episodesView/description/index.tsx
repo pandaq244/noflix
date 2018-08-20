@@ -24,7 +24,12 @@ class SeriesDescription extends React.Component<IProps> {
                     <span className="">"{this.props.episode.name}"</span>
                 </div>
                 <div className="">
-                   {this.props.series.description}
+                    <span>Episode Description: </span>
+                    <span>{this.props.episode.description}</span>
+                </div>
+                <div className="">
+                    <span>Series Description: </span>
+                    <span>{this.props.series.description}</span>
                 </div>
             </div>
         );

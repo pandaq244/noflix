@@ -1,33 +1,57 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './index.css';
 
-export default class Header extends React.Component {
+interface IState {
+    redirect: any,
+    value: string
+};
+
+export default class Header extends React.Component<{}, IState> {
+    constructor(props: any) {
+        super(props);
+
+        this.state = {
+            redirect: null,
+            value: ''
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    };
+    
+    public handleSubmit(e: any) {
+        e.preventDefault();
+        // redirect here       
+    };
+    public handleChange(e: any) {
+        this.setState({
+            value: e.target.value
+        });
+    };
     public render() {
         return(
             <React.Fragment>
-                <Link to="/">
+                <NavLink to="/">
                     <img className="page-logo" src="" alt="page-logo" />
-                </Link>
+                </NavLink>
                 <ul className="page-navigation">
                     <li>
-                        <Link to="/series">Series</Link>
+                        <NavLink to="/series" activeClassName="page-naviagtion__a--open">Series</NavLink>
                     </li>
                     <li>
-                        <Link to="/films">Films</Link>
+                        <NavLink to="/films" activeClassName="page-naviagtion__a--open">Films</NavLink>
                     </li>
                 </ul>
                 <ul className="page-navigation page-navigation--right">
                     <li>
-                        <form name="" action="" method="">
-                            <input className="search__input" type="text" name="" placeholder="Search.." />
+                        <form onSubmit={this.handleSubmit}>
+                            <input onChange={this.handleChange} id="search__input" className="search__input" type="text" name="" placeholder="SEARCH OPTION SOON.." disabled={true} />
+                            {this.state.redirect}
                         </form>
                     </li>
-                    <li>
-                        {/* user todo */}
-                        pandaq244
-                    </li>
+                    <li>pandaq244</li>
                 </ul>
             </React.Fragment>
         );

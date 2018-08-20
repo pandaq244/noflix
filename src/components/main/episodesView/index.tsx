@@ -26,7 +26,7 @@ class EpisodeView extends React.Component<IProps , IState> {
             seriesId: this.props
         };    
     };
-    public async componentDidMount() {
+    public async componentWillMount() {
         const { id } = this.state.seriesId.match.params;
 
         const querySeries = Object(await seriesDocQuery(id));
@@ -40,8 +40,6 @@ class EpisodeView extends React.Component<IProps , IState> {
         });  
     };
     public async componentDidUpdate() {
-        console.log('a')
-
         const queryEpisode = await episodeQuery(
             this.props.series.episodes[this.props.series.seasonNumber][this.props.series.episodeNumber-1].id
         );
@@ -57,6 +55,8 @@ class EpisodeView extends React.Component<IProps , IState> {
             name: episodeData.name,
             source: sourceData.source
         });
+
+        document.title = `${this.props.series.name} S${zeroToZero(this.props.series.seasonNumber)}E${zeroToZero(this.props.series.episodeNumber)}`;
     };
     public render() {  
         return(
@@ -66,6 +66,10 @@ class EpisodeView extends React.Component<IProps , IState> {
             </main>
         );
     };
+};
+
+const zeroToZero = (data: number) => {
+    return data<10? `0${data}`:data;
 };
 
 const mapStateToProps = (state: any) => {

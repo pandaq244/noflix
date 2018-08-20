@@ -2,8 +2,9 @@ import * as firebase from 'firebase';
 import firebaseConf from '../../../../firebase.config';
 
 interface IProps {
-    limit: number,
-    type: string
+    collection: string,
+    count: number,
+    order: string
 };
 
 if(!firebase.apps.length) {
@@ -14,8 +15,9 @@ export default (data: IProps) => {
     return new Promise((resolve, reject) => {
         firebase
             .firestore()
-            .collection(data.type)
-            .limit(data.limit)
+            .collection(data.collection)
+            .orderBy(data.order)
+            .limit(data.count)
             .get()
             .then(snap => {
                 const documents: object[] = [];

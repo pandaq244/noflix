@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { episodeQuery } from '../../../../../api/query';
-
-import CreateLi from './li/';
+import OpenLi from './open/';
 
 interface IProps {
     index: number,
@@ -12,45 +10,24 @@ interface IProps {
 };
 
 interface IState {
-    render: any[],
-    episodes: any[]
+    render: any
 };
 
 class EpisodeNav extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         this.state = {
-            episodes: [],
             render: []
         };
 
         this.update = this.update.bind(this);
     };
-    public async componentDidMount() {
+    public async componentWillMount() {
         if(this.props.index === this.props.series.seasonNumber){
-            const episodes=this.props.series.episodes[this.props.series.seasonNumber]
-                .map(async (element: any) => {
-                    return episodeQuery(element.id);
-                });
-            const season=await Promise.all(episodes);
-
             this.setState({
-                episodes: season
+                render: <OpenLi index={this.props.index} /> 
             });
         };
-        const list: any[] = [];
-
-        this.state.episodes
-            .forEach((element: any, index: number) => {
-                list.push(
-                    <CreateLi key={Math.random()} id={element.id} season={this.props.index} episode={index+1} />
-                );
-            });
-
-        this.setState(prevState => ({
-            ...prevState,
-            render: list
-        }));
     };
     public update() {
         this.props.update({
@@ -62,9 +39,7 @@ class EpisodeNav extends React.Component<IProps, IState> {
         return(
             <li>
                 <span onClick={this.update} className="series-season--number">Season {this.props.index}</span>
-                <ul className="series-episodes__list">
-                    {this.state.render}
-                </ul>
+                {this.state.render}
             </li>
         );
     };

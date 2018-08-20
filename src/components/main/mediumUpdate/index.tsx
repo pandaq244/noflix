@@ -25,7 +25,8 @@ export default class MediumUpdate extends React.Component<IProps> {
                         listClass={["series-bar-container__list"]} 
                         query={{
                             collection: this.props.query,
-                            count: 6 
+                            count: 6,
+                            order: 'update' 
                         }} 
                     />
                     <div className="series-bar-container__button series-bar-container__button--next series-bar-container__button--active" >

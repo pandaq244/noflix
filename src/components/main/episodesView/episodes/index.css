@@ -1,7 +1,6 @@
 .series-episode-container {
   display: grid;
-  grid-template-rows: 50px 1fr;
-  background-color: rgba(0, 0, 0, 0.7); }
+  grid-template-rows: 50px 1fr; }
 
 .series-season__list {
   display: grid;
@@ -9,7 +8,11 @@
   .series-season__list li {
     display: grid;
     grid-template-rows: 50px auto;
-    align-items: center; }
+    align-items: center;
+    cursor: pointer; }
+    .series-season__list li span:hover {
+      z-index: 999;
+      background-color: #f1f1f1; }
 
 .series-season--number {
   align-self: center;
@@ -20,3 +23,8 @@
   .series-episodes__list li {
     grid-template-columns: .95fr;
     justify-content: center; }
+    .series-episodes__list li:hover {
+      background-color: #f00; }
+
+.episodes-nav__button {
+  text-align: center; }

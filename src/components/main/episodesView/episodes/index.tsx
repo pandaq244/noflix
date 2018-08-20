@@ -34,7 +34,6 @@ class EpisodesList extends React.Component<IProps, IState> {
         return list;
     };
     public render() {
-        console.log('aa')
         return(
             <div className="series-episode-container">
                 <h2>PICK UR EPISODE</h2>

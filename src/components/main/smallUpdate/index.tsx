@@ -18,7 +18,8 @@ export default class SmallUpdate extends React.Component<IProps> {
                 </span>
                 <SeriesList listClass={[]} query={{
                     collection: this.props.query,
-                    count: 7
+                    count: 7,
+                    order: 'name'
                 }} />
             </React.Fragment>
         );

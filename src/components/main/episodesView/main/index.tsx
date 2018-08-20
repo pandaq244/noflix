@@ -10,14 +10,11 @@ interface IProps {
     navigation: any
 };
 
-class EpisodeMain extends React.Component<IProps> {
-    constructor(props: IProps) {
-        super(props);
-    };
-    public update() {
+const episodeMain = (props: IProps) => {
+    function update() {
         let data: any = null;
         
-        switch(this.props.navigation.bookmark) {
+        switch(props.navigation.bookmark) {
             case 0: 
                 data = <Description />;
                 break;
@@ -26,20 +23,18 @@ class EpisodeMain extends React.Component<IProps> {
                 break;
         };  
         return data;
-    };
-    public render() {
-        return(
-            <React.Fragment>
-                <div className="series-description-container">
-                    {this.update()}
-                </div>
-                <div className="player-container">
-                    <Player />
-                </div>
-                <Navigation />
-            </React.Fragment>
-        );
-    };
+    }
+    return(
+        <React.Fragment>
+            <div className="series-description-container">
+                {update()}
+            </div>
+            <div className="player-container">
+                <Player />
+            </div>
+            <Navigation />
+        </React.Fragment>
+    );
 };
 
 const mapStateToProps = (state: any) => {
@@ -48,4 +43,4 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-export default connect(mapStateToProps)(EpisodeMain);
+export default connect(mapStateToProps)(episodeMain);
