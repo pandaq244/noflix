@@ -1,49 +1,19 @@
-interface ISeries {
-    description: string,
-    episodeNumber: number,
-    episodes: {},
-    id: string,
-    name: string,
-    seasonNumber: number
-};
+import { 
+    IEpisode, 
+    IEpisodeAction,
+    ISeries, 
+    ISeriesNav, 
+    ISeriesNavAction,
+} from '../interface';
 
-interface IEpisode {
-    description: string,
-    name: string,
-    source: string
-};
+import { 
+    episodeInitState, 
+    seriesInitState, 
+    seriesNavInitState 
+} from '../init';
 
-interface ISeriesNav {
-    bookmark: number,
-    options: string[]
-};
 
-const seriesState = {
-    description: '',
-    episodeNumber: 1,
-    episodes: {},
-    id: '',
-    name: '',
-    seasonNumber: 1
-};
-
-const episodeState = {
-    description: '',
-    name: '',
-    source: ''
-};
-
-const seriesNavState = {
-    bookmark: 0,
-    options: [
-        'Overview',
-        'Episodes',
-        'More like this',
-        'Details'
-    ]
-};
-
-const seriesReducer = (state: ISeries = seriesState, action: any) => {
+export const seriesReducer = (state: ISeries = seriesInitState, action: any) => {
     switch(action.type) {
         case 'updateSeriesInfo': 
             state = {
@@ -66,7 +36,7 @@ const seriesReducer = (state: ISeries = seriesState, action: any) => {
     return state;
 };
 
-const episodeReducer = (state: IEpisode = episodeState, action: any) => {
+export const episodeReducer = (state: IEpisode = episodeInitState, action: IEpisodeAction) => {
     switch(action.type) {
         case 'updateEpisodeInfo': 
             state = {
@@ -79,7 +49,7 @@ const episodeReducer = (state: IEpisode = episodeState, action: any) => {
     return state;
 };
 
-const seriesNavReducer = (state: ISeriesNav = seriesNavState, action: any) => {
+export const seriesNavReducer = (state: ISeriesNav = seriesNavInitState, action: ISeriesNavAction) => {
     switch(action.type) {
         case 'updateNavBookmark':
             state = {
@@ -90,9 +60,3 @@ const seriesNavReducer = (state: ISeriesNav = seriesNavState, action: any) => {
     };
     return state;
 };
-
-export {
-    seriesReducer,
-    seriesNavReducer,
-    episodeReducer,
-}

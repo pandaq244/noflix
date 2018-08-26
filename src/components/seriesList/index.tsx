@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { seriesListQuery } from '../../../api/query/';
+import { seriesListQuery } from '../../api/query/';
 
 import ListItem from './list';
 

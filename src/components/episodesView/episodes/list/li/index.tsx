@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { episodeQuery } from '../../../../../../api/query';
+import { episodeQuery } from '../../../../../api/query';
 
 interface IProps {
     episode: number,

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import CreateLi from '../li/';
 
-import { episodeQuery } from '../../../../../../api/query';
+import { episodeQuery } from '../../../../../api/query';
 
 interface IProps {
     series: any,

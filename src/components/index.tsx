@@ -5,11 +5,12 @@ import {
     Switch
 } from 'react-router-dom';
 
-import Header from './header';
-import StartScreen from './main';
-import EpisodeView from './main/episodesView';
-import SearchView from './main/searchView';
-import SeriesView from './main/seriesView';
+import Header from './header/';
+import StartScreen from './mainView/';
+
+import EpisodeView from './episodesView/';
+import SearchView from './searchView/';
+import SeriesView from './seriesView/';
 
 import './index.css';
 
@@ -17,7 +18,7 @@ export default class App extends React.Component {
   public render() {
     // alert('dr house ma dodane kilka odcinkow do bazy');
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <React.Fragment>
                 <header className="header-bar">
                     <Header />

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import SmallUpdate from './smallUpdate';
+import SmallUpdate from '../smallUpdate/';
 
 import './index.css';
 
@@ -9,6 +9,7 @@ export default class StartScreen extends React.Component {
         document.title='NoFlix';
     };
     public render() {
+        alert('dr house ma kilka odcinkow')
         return(
             <main className="main-app"> 
                 <div className="series-small-container">

@@ -1,37 +1,27 @@
 import * as React from 'react';
+
 import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
 
 import Main from './main/';
 
-import { episodeQuery, seriesDocQuery, sourceQuery } from  '../../../api/query';
+import { episodeQuery, seriesDocQuery, sourceQuery } from  '../../api/query/';
 
 import './index.css';
 
-interface IProps {
+interface IProps extends RouteComponentProps<any> {
     series: any,
-    id: string,
     updateEpisode: any,
     updateSeries: any
 };
 
-interface IState {
-    seriesId: any
-};
-
-class EpisodeView extends React.Component<IProps , IState> {
-    constructor(props: IProps) {
-        super(props);
-        
-        this.state={ 
-            seriesId: this.props
-        };    
-    };
+class EpisodeView extends React.Component<IProps> {
     public async componentWillMount() {
-        const { id } = this.state.seriesId.match.params;
+        const { id } = this.props.match.params;
 
         const querySeries = Object(await seriesDocQuery(id));
         const seriesData = querySeries.data();
-     
+
         this.props.updateSeries({
             description: seriesData.description,
             episodes: seriesData.episodes,
