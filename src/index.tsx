@@ -1,19 +1,20 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import registerServiceWorker from './registerServiceWorker';
+
+import App from './components';
 
 import store from './redux';
 
-import App from './components';
-import registerServiceWorker from './registerServiceWorker';
-
-console.log(Provider)
-
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <App />
+      </BrowserRouter>
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
+
 registerServiceWorker();

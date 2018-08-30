@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-interface IProps{
-    name: string,
-    link: string,
-    preview: string
-}
+import {
+    ISeriesListUlProps as IProps
+} from '../../../interfaces/components/';
 
 export default (props: IProps) => {
     return(

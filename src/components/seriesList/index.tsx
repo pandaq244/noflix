@@ -1,38 +1,45 @@
 import * as React from 'react';
 
-import { seriesListQuery } from '../../api/query/';
+import { searchQuery, seriesListQuery } from '../../api/query/';
 
 import ListItem from './list';
 
 import './index.css'
 
-interface IProps{
-    listClass: string[],
-    query: {
-        collection: string,
-        count: number,
-        order: string
-    }
-};
-
-interface IState{
-    list: any
-};
+import {
+    ISeriesListProps as IProps,
+    ISeriesListState as IState
+} from '../../interfaces/components/';
 
 export default class SeriesList extends React.Component<IProps, IState> {
     constructor(props: IProps){
         super(props);
-        this.state={
+
+        this.state = {
             list: []
         };
     };
-    public async componentDidMount() {    
-        const seriesQuery = await seriesListQuery({
-            collection: this.props.query.collection,
-            count: this.props.query.count,
-            order: this.props.query.order,
-        }); 
-        
+    public async componentWillMount() {
+        let seriesQuery: any;
+
+        switch(this.props.query.type){
+            case 0:
+                seriesQuery = await seriesListQuery({
+                    collection: this.props.query.collection,
+                    count: this.props.query.count,
+                    order: this.props.query.order
+                });
+                break;
+            case 1:
+                seriesQuery = await searchQuery({
+                    collection: this.props.query.collection,
+                    count: this.props.query.count,
+                    name: this.props.query.name,
+                    order: this.props.query.order
+                });
+                break;
+        };
+
         this.setState({
             list: seriesQuery
         });
@@ -42,11 +49,11 @@ export default class SeriesList extends React.Component<IProps, IState> {
             return <ListItem key={element.id} link={element.id} name={element.data.name}preview={element.data.preview} />;
         });
     };
-    public render() {     
+    public render() {
         return(
-            <ul className={`element-list ${this.props.listClass.join(' ')}`}>
+            <ul className={`element-list ${this.props.listClass}`}>
                {this.renderList()}
-            </ul> 
+            </ul>
         );
     };
 };

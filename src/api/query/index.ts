@@ -1,9 +1,10 @@
-import episodeQuery from './episodeQuery/';
-import { seriesDocQuery, seriesListQuery } from './seriesQuery/';
-import sourceQuery from './sourceQuery/';
+import episodeQuery from './episode/';
+import { searchQuery, seriesDocQuery, seriesListQuery } from './series/';
+import sourceQuery from './source/';
 
 export {
     episodeQuery,
+    searchQuery,
     seriesDocQuery,
     seriesListQuery,
     sourceQuery

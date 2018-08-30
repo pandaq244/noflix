@@ -1,12 +1,21 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { logger } from 'redux-logger';
 
-import { episodeReducer, seriesNavReducer, seriesReducer  } from './reducer';
+import {
+    applyMiddleware,
+    combineReducers,
+    createStore
+} from 'redux';
 
-const allReducer=combineReducers({
-    episode: episodeReducer,
-    series: seriesReducer,
-    seriesNav: seriesNavReducer
+import {
+    episode,
+    navigation,
+    series
+} from './reducer';
+
+const allReducer = combineReducers({
+    episode,
+    navigation,
+    series
 });
 
 export default createStore(

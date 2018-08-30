@@ -4,23 +4,27 @@ import SeriesList from '../seriesList';
 
 import './index.css';
 
-interface IProps{
-    title: string,
-    query: string
-}
+import {
+    IAllUpdateProps as IProps
+} from '../../interfaces/components/';
 
 export default class SmallUpdate extends React.Component<IProps> {
-    public render() {      
+    public render() {
         return(
             <React.Fragment>
                 <span className="">
                     {this.props.title}
                 </span>
-                <SeriesList listClass={[]} query={{
-                    collection: this.props.query,
-                    count: 7,
-                    order: 'name'
-                }} />
+                <SeriesList
+                    listClass=""
+                    query={{
+                         collection: this.props.query,
+                         count: 7,
+                         name: '',
+                         order: 'name',
+                         type: 0
+                    }}
+                />
             </React.Fragment>
         );
     };

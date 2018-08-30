@@ -1,24 +1,9 @@
-export const seriesInitState = {
-    description: '',
-    episodeNumber: 1,
-    episodes: {},
-    id: '',
-    name: '',
-    seasonNumber: 1
-};
+import { initEpisode }  from './episode/';
+import { initNavigation } from './navigation/';
+import { initSeries } from './series/';
 
-export const episodeInitState = {
-    description: '',
-    name: '',
-    source: ''
-};
-
-export const seriesNavInitState = {
-    bookmark: 0,
-    options: [
-        'Overview',
-        'Episodes',
-        'More like this',
-        'Details'
-    ]
-};
+export {
+    initEpisode,
+    initSeries,
+    initNavigation
+}
