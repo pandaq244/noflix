@@ -1,10 +1,7 @@
-export interface IWatchEpisodesListLiProps {
-    episode: number,
-    season: number,
-    updateSeries: any,
-    id: string
-};
+export {
+    default as IWatchEpisodesListLiProps
+} from './props/';
 
-export interface IWatchEpisodesListLiState {
-    episode: any
-};
+export {
+    default as IWatchEpisodesListLiState
+} from './state/';

@@ -1,9 +1,11 @@
-import episode from './episode/';
-import navigation from './navigation/';
-import series from './series/';
+export {
+    default as episode
+} from './episode/';
 
 export {
-    episode,
-    navigation,
-    series
-};
+    default as navigation
+} from './navigation/';
+
+export {
+    default as series
+} from './series/';

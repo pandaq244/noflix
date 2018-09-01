@@ -1,3 +1,11 @@
-export * from './init/';
-export * from './updateDescription/';
-export * from './updateEpisodeNumber/';
+export {
+    default as ISeries
+} from './init/';
+
+export {
+    default as IUpdateSeriesSettings
+} from './updateDescription/';
+
+export {
+    default as IUpdateSeriesEpisode
+} from './updateEpisodeNumber/';

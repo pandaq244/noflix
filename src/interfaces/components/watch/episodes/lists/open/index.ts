@@ -1,10 +1,7 @@
-export interface IWatchEpisodesListOpenProps {
-    series: any,
-    index: number
-};
+export {
+    default as IWatchEpisodesListOpenProps
+} from './props/';
 
-export interface IWatchEpisodesListOpenState {
-    count: number,
-    index: number,
-    render: any[]
-};
+export {
+    default as IWatchEpisodesListOpenState
+} from './state/';

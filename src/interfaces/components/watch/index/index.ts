@@ -1,3 +1,3 @@
-export interface IWatchIndexProps {
-    navigation: any
-};
+export {
+    default as IWatchIndexProps
+} from './props/';

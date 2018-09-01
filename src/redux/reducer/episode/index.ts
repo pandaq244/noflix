@@ -1,7 +1,13 @@
-import { initEpisode } from '../../init/';
-import { IEpisodeAction } from '../../interface/';
+import {
+    initEpisode
+} from '../../init/';
 
-export default (state = initEpisode, action: IEpisodeAction) => {
+import {
+    IEpisode,
+    IEpisodeAction
+} from '../../interface/';
+
+export default (state: IEpisode = initEpisode, action: IEpisodeAction) => {
     switch(action.type) {
         case '@@episode/UPDATE_INFO':
             state = {

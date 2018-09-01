@@ -1,7 +1,7 @@
-export interface IWatchNavigationIndexProps {
-    navigation: any
-};
+export {
+    default as IWatchNavigationIndexProps
+} from './props/';
 
-export interface IWatchNavigationIndexState {
-    navigation: any[]
-};
+export {
+    default as IWatchNavigationIndexState
+} from './state/';

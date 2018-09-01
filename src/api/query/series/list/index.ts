@@ -11,7 +11,7 @@ if(!firebase.apps.length) {
     firebase.initializeApp(firebaseConf);
 };
 
-export default (data: IProps) => {
+export const seriesListQuery = (data: IProps) => {
     return new Promise((resolve, reject) => {
         firebase
             .firestore()

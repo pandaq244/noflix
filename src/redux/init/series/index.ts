@@ -1,6 +1,4 @@
-import { ISeries } from '../../interface/';
-
-export const initSeries: ISeries = {
+export default {
     description: '',
     episodeNumber: 1,
     episodes: {},

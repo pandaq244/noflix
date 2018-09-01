@@ -1,8 +1,7 @@
-export interface IWatchEpisodesIndexProps {
-    readonly episode: any,
-    readonly series: any
-};
+export {
+    default as IWatchEpisodesIndexProps
+} from './props/';
 
-export interface IWatchEpisodesIndexState {
-    episodes: any[]
-};
+export {
+    default as IWatchEpisodesIndexState
+} from './state/';

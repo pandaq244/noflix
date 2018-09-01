@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import {
+    connect
+} from 'react-redux';
 
 import CreateList from './list';
-
-import './index.css';
 
 import {
     IWatchEpisodesIndexProps as IProps,
     IWatchEpisodesIndexState as IState
 } from '../../../interfaces/components/';
+
+import './index.css';
 
 class EpisodesList extends React.Component<IProps, IState> {
     constructor(props: IProps) {

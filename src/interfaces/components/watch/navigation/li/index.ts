@@ -1,9 +1,3 @@
-export interface IWatchNavigationLiProps {
-    value: string,
-    index: number,
-    navigation: {
-        bookmark: number,
-        options: string[]
-    },
-    updateBookmark: any
-};
+export {
+    default as IWatchNavigationLiProps
+} from './props/';

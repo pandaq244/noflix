@@ -1,3 +1,3 @@
-export interface IWatchPlayerProps {
-    episode: any
-};
+export {
+    default as IWatchPlayerProps
+} from './props/';

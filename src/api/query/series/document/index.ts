@@ -6,7 +6,7 @@ if(!firebase.apps.length) {
     firebase.initializeApp(firebaseConf);
 };
 
-export default (id: string) => {
+export const seriesDocQuery = (id: string) => {
     return new Promise((resolve, reject) => {
         firebase
             .firestore()

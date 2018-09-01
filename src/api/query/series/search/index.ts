@@ -12,7 +12,7 @@ if(!firebase.apps.length) {
     firebase.initializeApp(firebaseConf);
 };
 
-export default (data: IProps) => {
+export const searchQuery = (data: IProps) => {
     return new Promise((resolve, reject) => {
         firebase
             .firestore()

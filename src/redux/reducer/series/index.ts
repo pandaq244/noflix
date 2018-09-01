@@ -1,6 +1,12 @@
-import { initSeries } from '../../init/';
+import {
+    initSeries
+} from '../../init/';
 
-export default (state = initSeries, action: any) => {
+import {
+    ISeries
+} from '../../interface/';
+
+export default (state: ISeries = initSeries, action: any) => {
     switch(action.type) {
         case '@@series/UPDATE_SETTINGS':
             state = {

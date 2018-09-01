@@ -1,7 +1,4 @@
-import { IEpisode } from '../../interface/';
-
-
-export const initEpisode: IEpisode = {
+export default {
     description: '',
     name: '',
     source: ''

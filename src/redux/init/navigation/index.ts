@@ -1,6 +1,4 @@
-import { INavigation } from '../../interface/';
-
-export const initNavigation: INavigation = {
+export default {
     bookmark: 0,
     options: [
         'Overview',

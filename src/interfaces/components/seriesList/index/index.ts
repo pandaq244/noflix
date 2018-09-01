@@ -1,14 +1,7 @@
-export interface ISeriesListProps {
-    readonly listClass: string,
-    readonly query: {
-        collection: string,
-        count: number,
-        name: string,
-        type: number,
-        order: string
-    }
-};
+export {
+    default as ISeriesListProps
+} from './props/';
 
-export interface ISeriesListState {
-    list: any
-};
+export {
+    default as ISeriesListState
+} from './state/';

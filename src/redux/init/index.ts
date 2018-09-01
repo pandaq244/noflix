@@ -1,9 +1,11 @@
-import { initEpisode }  from './episode/';
-import { initNavigation } from './navigation/';
-import { initSeries } from './series/';
+export {
+    default as initEpisode
+} from './episode/';
 
 export {
-    initEpisode,
-    initSeries,
-    initNavigation
-}
+    default as initNavigation
+} from './navigation/';
+
+export {
+    default as initSeries
+} from './series/';

@@ -1,10 +1,4 @@
-import IAction from '../../default/';
-
-export interface INavigation {
+export default interface INavigation {
     bookmark: number,
     options: string[]
-};
-
-export interface INavigationAction extends IAction {
-    payload: number
 };

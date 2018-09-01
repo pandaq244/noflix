@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import SeriesList from '../seriesList';
 
-import './index.css';
-
 import {
     IAllUpdateProps as IProps
 } from '../../interfaces/components/';
+
+import './index.css';
 
 export default class SmallUpdate extends React.Component<IProps> {
     public render() {

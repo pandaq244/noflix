@@ -1,3 +1,3 @@
-export interface IUpdateNavigationBookmark {
+export default interface IUpdateNavigationBookmark {
     id: number
 };

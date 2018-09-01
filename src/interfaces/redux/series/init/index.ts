@@ -1,4 +1,4 @@
-export interface ISeries {
+export default interface ISeries {
     description: string,
     episodeNumber: number,
     episodes: {},

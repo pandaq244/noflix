@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-
-import './index.css';
+import {
+    connect
+} from 'react-redux';
 
 import {
     IWatchDescriptionProps as IProps
 } from '../../../interfaces/components/';
+
+import './index.css';
 
 class SeriesDescription extends React.Component<IProps> {
     public render() {

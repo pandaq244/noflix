@@ -1,7 +1,13 @@
-import { initNavigation } from '../../init/';
-import { INavigationAction } from '../../interface/';
+import {
+    initNavigation
+} from '../../init/';
 
-export default (state = initNavigation, action: INavigationAction) => {
+import {
+    INavigation,
+    INavigationAction
+} from '../../interface/';
+
+export default (state: INavigation = initNavigation, action: INavigationAction) => {
     switch(action.type) {
         case '@@navigation/UPDATE_BOOKMARK':
             state = {

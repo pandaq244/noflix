@@ -1,15 +1,18 @@
 import * as React from 'react';
 
-import { searchQuery, seriesListQuery } from '../../api/query/';
-
 import ListItem from './list';
 
-import './index.css'
+import {
+    searchQuery,
+    seriesListQuery
+} from '../../api/';
 
 import {
     ISeriesListProps as IProps,
     ISeriesListState as IState
 } from '../../interfaces/components/';
+
+import './index.css';
 
 export default class SeriesList extends React.Component<IProps, IState> {
     constructor(props: IProps){

@@ -1,5 +1,3 @@
-import { logger } from 'redux-logger';
-
 import {
     applyMiddleware,
     combineReducers,
@@ -7,10 +5,14 @@ import {
 } from 'redux';
 
 import {
+    logger
+} from 'redux-logger';
+
+import {
     episode,
     navigation,
     series
-} from './reducer';
+} from './reducer/';
 
 const allReducer = combineReducers({
     episode,

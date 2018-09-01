@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import {
+    connect
+} from 'react-redux';
 
 import Description from './description/';
 import Episodes from './episodes/';

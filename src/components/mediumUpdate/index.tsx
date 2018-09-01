@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import SeriesList from '../seriesList';
 
+import {
+    IAllUpdateProps as IProps
+} from '../../interfaces/components/';
+
 import leftArrow from './left_arrow.png';
 import rightArrow from './right_arrow.png';
 
 import './index.css';
-
-import {
-    IAllUpdateProps as IProps
-} from '../../interfaces/components/';
 
 export default class MediumUpdate extends React.Component<IProps> {
     public render() {

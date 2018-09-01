@@ -1,4 +1,3 @@
-export interface IAllUpdateProps {
-    title: string,
-    query: string
-};
+export {
+    default as IAllUpdateProps
+} from './props/';

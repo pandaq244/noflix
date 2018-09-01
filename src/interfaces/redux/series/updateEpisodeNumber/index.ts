@@ -1,4 +1,4 @@
-export interface IUpdateSeriesEpisode {
+export default interface IUpdateSeriesEpisode {
     episodeNumber: number,
     seasonNumber: number
 };
