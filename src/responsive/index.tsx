@@ -6,7 +6,7 @@ import devices from './devices/';
 import {
     DesktopMain,
     MobileMain
-} from '../components/';
+} from '../containers/';
 
 export const DefaultDevice = (props: {}) => (
     <MediaQuery minWidth={devices.default.minWidth} >

@@ -1,3 +1,1 @@
-export * from './allUpdate/';
-export * from './seriesList/';
-export * from './watch/';
+export * from './series/';

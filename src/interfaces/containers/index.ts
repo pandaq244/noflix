@@ -1,3 +1,2 @@
-export * from './header/';
-export * from './search/';
-export * from './watch/';
+export * from './app/';
+export * from './series/';

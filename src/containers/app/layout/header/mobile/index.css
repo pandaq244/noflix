@@ -1,0 +1,15 @@
+.mobile-header {
+  grid-template-columns: .95fr;
+  background-color: #222;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #000; }
+
+.mobile-navigation {
+  grid-auto-columns: repeat(6, 1fr); }
+  .mobile-navigation li {
+    color: #666; }
+  .mobile-navigation svg {
+    font-size: 30px; }
+    .mobile-navigation svg:hover {
+      color: red; }

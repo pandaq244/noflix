@@ -1,5 +1,5 @@
 export {
     default as App
-} from './index/';
+} from './app/';
 
-export * from './main/';
+export * from './series/';

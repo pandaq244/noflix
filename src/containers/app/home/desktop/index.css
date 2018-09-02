@@ -1,0 +1,28 @@
+.series-small-container,
+.series-medium-container {
+  display: grid;
+  grid-template-columns: .95fr;
+  justify-content: center;
+  grid-row-gap: 8px; }
+
+.series-medium-container {
+  grid-template-rows: auto .95fr;
+  grid-template-columns: .85fr;
+  align-content: center; }
+
+.element-list {
+  display: grid;
+  grid-column-gap: 15px; }
+
+.main-app--desktop {
+  grid-row-gap: 10px;
+  overflow-y: auto; }
+
+.series-small-container--desktop {
+  grid-template-rows: auto 300px; }
+
+.series-medium-container--desktop {
+  grid-template-rows: auto 1fr; }
+
+.element-list--desktop {
+  grid-template-columns: repeat(7, 1fr); }
