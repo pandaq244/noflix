@@ -1,3 +1,3 @@
-export default interface IWatchNavigationIndexState {
-    navigation: any[]
+export default interface IState {
+    navigation: any[];
 };

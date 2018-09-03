@@ -2,6 +2,6 @@ import {
     RouteComponentProps
 } from 'react-router-dom';
 
-export default interface ISearchContainerProps extends RouteComponentProps<any> {
-    readonly id: string
+export default interface IProps extends RouteComponentProps<any> {
+    readonly id: string;
 };

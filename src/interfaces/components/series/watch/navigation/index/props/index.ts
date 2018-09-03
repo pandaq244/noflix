@@ -1,3 +1,3 @@
-export default interface IWatchNavigationIndexProps {
-    navigation: any
+export default interface IProps {
+    readonly navigation: any;
 };

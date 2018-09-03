@@ -1,5 +1,5 @@
-export default interface IHeaderContainerState {
-    fire: boolean,
-    redirect: any,
-    value: string
+export default interface IState {
+    fire: boolean;
+    redirect: any;
+    value: string;
 };

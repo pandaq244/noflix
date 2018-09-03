@@ -1,8 +1,8 @@
-export default interface IEpisodeAction {
-    type: string,
+export default interface IAction {
+    type: string;
     payload: {
-        description: string,
-        name: string,
-        source: string
+        description: string;
+        name: string;
+        source: string;
     };
 };

@@ -1,5 +1,5 @@
 
-export default interface IAllUpdateProps {
+export default interface IProps {
     title: string;
     classList: string;
     query: {

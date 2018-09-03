@@ -1,3 +1,3 @@
-export default interface IWatchEpisodesIndexState {
-    episodes: any[]
+export default interface IState {
+    episodes: any[];
 };

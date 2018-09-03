@@ -1,3 +1,3 @@
-export default interface IUpdateNavigationBookmark {
-    id: number
+export default interface IRedux {
+    id: number;
 };

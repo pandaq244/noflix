@@ -1,1 +1,3 @@
-export * from './devices/';
+export {
+    default as IDevicesProps
+} from './devices/';

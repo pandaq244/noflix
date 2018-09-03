@@ -10,6 +10,7 @@ import {
 
 export const DefaultDevice = (props: {}) => (
     <MediaQuery minWidth={devices.default.minWidth} >
+        {alert('dr house ma kilka odcinkow')}
         <DesktopMain />
     </MediaQuery>
 );

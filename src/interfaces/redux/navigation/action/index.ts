@@ -1,4 +1,4 @@
-export default interface INavigationAction {
-    type: string,
-    payload: number
+export default interface IRedux {
+    type: string;
+    payload: number;
 };

@@ -1,4 +1,4 @@
-export default interface IAllUpdateDeviceProps {
+export default interface IProps {
     title: string;
     query: {
         collection: string;

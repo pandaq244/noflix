@@ -1,3 +1,3 @@
-export default interface IWatchPlayerProps {
-    episode: any
+export default interface IProps {
+    readonly episode: any;
 };

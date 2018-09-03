@@ -1,9 +1,9 @@
-interface IProps {
+interface IBasic {
     minWidth?: number;
     maxWidth?: number;
 };
 
-export interface IDevicesProps {
-    default: IProps;
-    mobile: IProps;
+export default interface IProps {
+    default: IBasic;
+    mobile: IBasic;
 };

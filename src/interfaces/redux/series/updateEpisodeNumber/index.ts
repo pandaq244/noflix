@@ -1,4 +1,4 @@
-export default interface IUpdateSeriesEpisode {
-    episodeNumber: number,
-    seasonNumber: number
+export default interface IRedux {
+    episodeNumber: number;
+    seasonNumber: number;
 };

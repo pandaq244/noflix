@@ -1,4 +1,4 @@
-export default interface INavigation {
-    bookmark: number,
-    options: string[]
+export default interface IRedux {
+    bookmark: number;
+    options: string[];
 };

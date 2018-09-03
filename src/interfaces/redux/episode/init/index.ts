@@ -1,5 +1,5 @@
-export default interface IEpisode {
-    description: string,
-    name: string,
-    source: string
+export default interface IRedux {
+    description: string;
+    name: string;
+    source: string;
 };

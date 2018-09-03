@@ -1,5 +1,5 @@
-export default interface ISeriesListUlProps {
-    readonly name: string,
-    readonly link: string,
-    readonly preview: string
+export default interface IProps {
+    readonly name: string;
+    readonly link: string;
+    readonly preview: string;
 };
