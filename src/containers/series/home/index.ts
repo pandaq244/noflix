@@ -1,3 +1,1 @@
-export {
-    default as DesktopSeriesSceen
-} from './desktop/';
+export * from './devices/';

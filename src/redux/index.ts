@@ -10,14 +10,16 @@ import {
 
 import {
     episode,
-    navigation,
-    series
+    homeNavigation,
+    series,
+    watchNavigation
 } from './reducer/';
 
 const allReducer = combineReducers({
     episode,
-    navigation,
-    series
+    homeNavigation,
+    series,
+    watchNavigation
 });
 
 export default createStore(

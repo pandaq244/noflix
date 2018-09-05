@@ -1,7 +1,9 @@
 export {
     IEpisode,
     IEpisodeAction,
-    INavigation,
-    INavigationAction,
+    IHomeNavigation,
+    IWatchNavigation,
+    IHomeNavigationAction,
+    IWatchNavigationAction,
     ISeries
 } from '../../interfaces/redux/';

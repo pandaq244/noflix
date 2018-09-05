@@ -4,7 +4,7 @@ import {
 } from 'react-redux';
 
 import {
-    IUpdateNavigationBookmark
+    IWatchUpdateNavigationBookmark as IUpdateBookmark
 } from '../../../../../interfaces/redux/';
 
 import {
@@ -27,16 +27,16 @@ import {
 };
 const mapStateToProps = (state: any) => {
     return {
-        navigation: state.navigation
+        navigation: state.watchNavigation
     };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        updateBookmark: (data: IUpdateNavigationBookmark) => {
+        updateBookmark: (data: IUpdateBookmark) => {
             dispatch({
                 payload: data.id,
-                type: '@@navigation/UPDATE_BOOKMARK'
+                type: '@@watch_navigation/UPDATE_BOOKMARK'
             });
         }
     };

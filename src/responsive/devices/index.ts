@@ -1,14 +1,7 @@
-import {
-    IDevicesProps as IProps
-} from '../../interfaces/responsive/';
+export {
+    default as DesktopDevice
+} from './desktop/';
 
-const devices: IProps = {
-    default: {
-        minWidth: 1200
-    },
-    mobile: {
-        maxWidth: 720
-    }
-};
-
-export default devices;
+export {
+    default as MobileDevice
+} from './mobile/';

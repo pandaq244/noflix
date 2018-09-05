@@ -3,9 +3,13 @@ export {
 } from './episode/';
 
 export {
-    default as initNavigation
-} from './navigation/';
-
-export {
     default as initSeries
 } from './series/';
+
+export {
+    default as initWatchNavigation
+} from './watch_navigation/';
+
+export {
+    default as initHomeNavigation
+} from './home_navigation/';

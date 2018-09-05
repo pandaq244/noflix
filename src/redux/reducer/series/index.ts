@@ -1,12 +1,12 @@
 import {
-    initSeries
+    initSeries as init
 } from '../../init/';
 
 import {
-    ISeries
+    ISeries as IState
 } from '../../interface/';
 
-export default (state: ISeries = initSeries, action: any) => {
+export default (state: IState = init, action: any) => {
     switch(action.type) {
         case '@@series/UPDATE_SETTINGS':
             state = {

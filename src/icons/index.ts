@@ -3,7 +3,10 @@ import {
 } from '@fortawesome/fontawesome-svg-core';
 
 import {
+    faArrowCircleDown,
+    faArrowCircleUp,
     faComment,
+    faEllipsisH,
     faFolder,
     faHome,
     faSearch,
@@ -11,7 +14,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export default library.add(
+    faArrowCircleDown,
+    faArrowCircleUp,
     faComment,
+    faEllipsisH,
     faFolder,
     faHome,
     faSearch,

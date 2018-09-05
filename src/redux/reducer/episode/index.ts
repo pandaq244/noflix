@@ -1,13 +1,13 @@
 import {
-    initEpisode
+    initEpisode as init
 } from '../../init/';
 
 import {
-    IEpisode,
-    IEpisodeAction
+    IEpisode as IState,
+    IEpisodeAction as IAction
 } from '../../interface/';
 
-export default (state: IEpisode = initEpisode, action: IEpisodeAction) => {
+export default (state: IState = init, action: IAction) => {
     switch(action.type) {
         case '@@episode/UPDATE_INFO':
             state = {

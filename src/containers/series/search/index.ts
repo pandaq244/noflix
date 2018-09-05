@@ -1,3 +1,1 @@
-export {
-    default as DesktopSearchScreen
-} from './desktop/';
+export * from './devices/';

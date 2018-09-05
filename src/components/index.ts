@@ -1,5 +1,2 @@
-export {
-    default as App
-} from './app/';
-
+export * from './home/';
 export * from './series/';

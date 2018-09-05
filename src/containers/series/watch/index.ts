@@ -1,3 +1,1 @@
-export {
-    default as DesktopWatchScreen
-} from './desktop/';
+export * from './devices';

@@ -1,3 +1,4 @@
 export * from './episode/';
-export * from './navigation/';
 export * from './series/';
+export * from './watch_navigation/';
+export * from './home_navigation/';
