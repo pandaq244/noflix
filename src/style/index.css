@@ -44,3 +44,9 @@ li {
 .app-container {
   position: relative;
   display: grid; }
+
+.element-list-small--desktop {
+  grid-template-columns: repeat(7, 1fr); }
+
+.element-list-medium--desktop {
+  grid-template-columns: repeat(6, 1fr); }
